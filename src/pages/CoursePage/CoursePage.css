@@ -1,0 +1,17 @@
+.page {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 40px;
+    /* flex-wrap: wrap; */
+}
+
+.courseList {
+    flex-grow: 1;
+}
+
+.commandBar {
+    position: fixed !important;
+    width: 100%;
+    z-index: 50;
+}

@@ -1,0 +1,9 @@
+.YearPlanning-QuarterHolder {
+  display: flex;
+}
+
+.YearPlanning-title {
+  text-align: left;
+  font-weight: normal;
+  padding-left: 30px;
+}

@@ -1,0 +1,62 @@
+.CoursePlaque {
+  background-color: #0078d7;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px;
+  color: white;
+}
+
+.CoursePlaque-title {
+  text-align: left;
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.CoursePlaque-content {
+  text-align: left;
+}
+
+.CoursePlaque-content p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.CoursePlaque-people {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: stretch;
+}
+
+.CoursePlaque-vertical-line {
+  width: 1px;
+  background-color: #71afe5;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.hoverCard-compactCard {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.hoverCard-compactCard-buttons {
+  display: flex;
+}
+
+.CoursePlaque-arrows {
+  text-align: right;
+}
+
+.CoursePlaque-arrows > i {
+  padding: 5px;
+  font-size: 25px;
+  width: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+.CoursePlaque-arrows > i:hover {
+  background-color: #71afe5;
+}
