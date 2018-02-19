@@ -3,32 +3,43 @@ import * as React from 'react';
 // import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import CourseList from '../../components/CourseList/CourseList';
 import './CoursePage.css';
-import { CourseFilter, CourseFilterState } from '../../components/CourseFilter/CourseFilter';
+import { Selection } from 'office-ui-fabric-react/lib/components/DetailsList';
+import {
+  CourseFilter,
+  CourseFilterState
+} from '../../components/CourseFilter/CourseFilter';
 import { CommandBar } from 'office-ui-fabric-react/lib/components/CommandBar';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/components/ContextualMenu';
+import { CourseApi, Course } from '../../components/CourseApi/CourseApi';
 
 interface CoursePageState {
-  filter: CourseFilterState;
+  filter: CourseFilterState | null;
+  selection: Selection;
 }
 
 class CoursePage extends React.Component<{}, CoursePageState> {
-
   constructor(props: {}) {
     super(props);
     this._onFilterChanged = this._onFilterChanged.bind(this);
+    this._onAdd = this._onAdd.bind(this);
+    this.state = { filter: null, selection: new Selection() };
   }
 
   _onAdd(): void {
-    //
+    this.state.selection
+      .getSelection()
+      .forEach(i => new CourseApi().addCourse(i as Course));
   }
 
   _getCommands(): IContextualMenuItem[] {
-    return [{
-      key: 'addCourse',
-      name: 'Add course to IEP',
-      icon: 'Add',
-      onClick: this._onAdd
-    }];
+    return [
+      {
+        key: 'addCourse',
+        name: 'Add course to IEP',
+        icon: 'Add',
+        onClick: this._onAdd
+      }
+    ];
   }
 
   _onFilterChanged(newArgs: CourseFilterState) {
@@ -40,7 +51,7 @@ class CoursePage extends React.Component<{}, CoursePageState> {
   render() {
     let state: CourseFilterState | null;
     if (this.state) {
-      state = this.state.filter; 
+      state = this.state.filter;
     } else {
       state = null;
     }
@@ -49,9 +60,8 @@ class CoursePage extends React.Component<{}, CoursePageState> {
         <CommandBar className="commandBar" items={this._getCommands()} />
 
         <div className="page">
-
           <CourseFilter filterChanged={this._onFilterChanged} />
-          <CourseList filter={state} />
+          <CourseList filter={state} selection={this.state.selection} />
         </div>
       </div>
     );

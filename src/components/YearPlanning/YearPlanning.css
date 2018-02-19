@@ -1,9 +1,44 @@
-.YearPlanning-QuarterHolder {
-  display: flex;
+.YearPlanningQuarterHolder {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 30px;
+  padding-top: 0;
+  padding-bottom: 60px;
 }
 
 .YearPlanning-title {
   text-align: left;
   font-weight: normal;
   padding-left: 30px;
+  margin-bottom: 0;
+}
+
+.YearPlanningQuarterHolder > div {
+  grid-row: span;
+}
+
+.YearPlanningQuarterHolder > div.q1 {
+  grid-column-start: 1;
+}
+
+.YearPlanningQuarterHolder > div.q2 {
+  grid-column-start: 2;
+}
+
+.YearPlanningQuarterHolder > div.q3 {
+  grid-column-start: 3;
+}
+
+.YearPlanningQuarterHolder > div.q4 {
+  grid-column-start: 4;
+}
+
+.YearPlanningQuarterHolder > div.l0 {
+  grid-column-end: span 1;
+}
+
+.YearPlanningQuarterHolder > div.l1 {
+  grid-column-end: span 2;
 }

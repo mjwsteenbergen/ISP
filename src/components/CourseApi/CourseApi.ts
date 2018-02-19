@@ -9,8 +9,30 @@ export class CourseApi {
 
   startUrl: string = /*'http://localhost:56985/' + */ '/api';
 
-  getMyCourses(): Promise<SimpleCourse[]> {
-    return Promise.resolve([{ code: 'ET4388', year: '2016/2017' }]);
+  getMyCourses(): SimpleCourse[] {
+    let mycourses: SimpleCourse[] = [];
+    let storage = window.localStorage;
+    let news = storage.getItem('courses');
+    if (news !== null) {
+      console.log(news);
+      mycourses = JSON.parse(news) as SimpleCourse[];
+    }
+    return mycourses;
+  }
+
+  addCourse(arg: Course) {
+    let mycourses: SimpleCourse[] = [];
+    let storage = window.localStorage;
+    let news = storage.getItem('courses');
+    if (news !== null) {
+      console.log(news);
+      mycourses = JSON.parse(news) as SimpleCourse[];
+    }
+    mycourses.push({
+      code: arg.courseCode,
+      year: arg.courseYear
+    });
+    storage.setItem('courses', JSON.stringify(mycourses));
   }
 
   /**

@@ -79,8 +79,13 @@ class CoursePlaque extends React.Component<
   }
 
   render() {
+    let classes = [
+      'CoursePlaque',
+      'q' + this.props.course.quarterStart,
+      'l' + this.props.course.quarterLength
+    ];
     return (
-      <div className="CoursePlaque">
+      <div className={classes.join(' ')}>
         <p className="CoursePlaque-title">{this.props.course.courseName}</p>
         <div className="CoursePlaque-content">
           <div className="CoursePlaque-people">

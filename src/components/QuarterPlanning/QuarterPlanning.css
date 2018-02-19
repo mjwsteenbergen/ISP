@@ -2,7 +2,7 @@
   height: 1px;
   background-color: #212121;
   width: 100%;
-  margin-bottom: 15px;
+  /* margin-bottom: 5px; */
 }
 
 .QuarterPlanning-title {
@@ -13,7 +13,6 @@
 }
 
 .QuarterPlanning {
-  padding: 30px;
   flex-grow: 1;
   flex-basis: 0;
   padding-top: 10px;

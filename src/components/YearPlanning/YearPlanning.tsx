@@ -1,7 +1,8 @@
 import * as React from 'react';
-import QuarterPlanning from '../QuarterPlanning/QuarterPlanning';
 import './YearPlanning.css';
 import { Course } from '../CourseApi/CourseApi';
+import CoursePlaque from '../CoursePlaque/CoursePlaque';
+import QuarterPlanning from '../QuarterPlanning/QuarterPlanning';
 
 interface YearPlanningProps {
   year: string;
@@ -23,31 +24,16 @@ class YearPlanning extends React.Component<YearPlanningProps> {
     return (
       <div className="YearPlanning">
         <h1 className="YearPlanning-title"> {this.props.year} </h1>
-        <div className="YearPlanning-QuarterHolder">
-          <QuarterPlanning
-            year={this.props.year}
-            quarter={1}
-            courses={this.props.courses}
-            onMove={this._onMove}
-          />
-          <QuarterPlanning
-            year={this.props.year}
-            quarter={2}
-            courses={this.props.courses}
-            onMove={this._onMove}
-          />
-          <QuarterPlanning
-            year={this.props.year}
-            quarter={3}
-            courses={this.props.courses}
-            onMove={this._onMove}
-          />
-          <QuarterPlanning
-            year={this.props.year}
-            quarter={4}
-            courses={this.props.courses}
-            onMove={this._onMove}
-          />
+        <div className="YearPlanningQuarterHolder">
+          <QuarterPlanning quarter={1} />
+          <QuarterPlanning quarter={2} />
+          <QuarterPlanning quarter={3} />
+          <QuarterPlanning quarter={4} />
+          {this.props.courses
+            .filter(i => i.courseYear === this.props.year)
+            .map((i, index) => (
+              <CoursePlaque key={index} course={i} onMove={this._onMove} />
+            ))}
         </div>
       </div>
     );
